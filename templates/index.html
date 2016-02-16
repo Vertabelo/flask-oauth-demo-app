@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>OAuth Example app</title>
+         <link rel="stylesheet" href="/static/bower_components/bootstrap-social/bootstrap-social.css">
+         <link rel="stylesheet" href="/static/bower_components/bootstrap/dist/css/bootstrap.css">
+         <link rel="stylesheet" href="/static/bower_components/font-awesome/css/font-awesome.css">
+         <script src="/static/bower_components/jquery/dist/jquery.js"></script>
+    </head>
+    <body>
+        <div class="col-sm-4">
+        <h1 class="lead">OAuth by Example with Facebook and Flask</h1>
+            {% for message in get_flashed_messages() %}
+                <p><b>Error</b>: {{ message }}</p>
+            {% endfor %}
+            {% if current_user.is_authenticated %}
+                <h2 class="lead">Hi, {{ current_user.first_name }}!</h2>
+                <p><a class="btn btn-default" href="{{ url_for('logout') }}">Logout</a></p>
+            {% else %}
+                <p>
+                    <a class="btn btn-block btn-social btn-facebook" href="{{ url_for('facebook_authorize') }}">
+                        <span class="fa fa-facebook"></span>
+                        Login with Facebook</a>
+                </p>
+            {% endif %}
+
+        </div>
+    </body>
+</html>

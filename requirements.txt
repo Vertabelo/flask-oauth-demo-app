@@ -1,0 +1,13 @@
+Flask==0.10.1
+Flask-Bootstrap==3.3.5.7
+Flask-Login==0.3.2
+Flask-Rauth==0.3.2
+Flask-SQLAlchemy==2.1
+itsdangerous==0.24
+Jinja2==2.8
+MarkupSafe==0.23
+psycopg2==2.6.1
+rauth==0.7.2
+requests==2.8.1
+SQLAlchemy==1.0.9
+Werkzeug==0.11.2
