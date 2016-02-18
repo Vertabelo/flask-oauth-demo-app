@@ -1,4 +1,5 @@
 from flask import Flask
+from sqlalchemy import DDL, event
 from flask.ext.login import LoginManager, UserMixin
 from flask.ext.sqlalchemy import SQLAlchemy
 
@@ -11,6 +12,7 @@ app.config['OAUTH_CREDENTIALS'] = {
         'secret': 'replace with your client secret'
     }
 }
+
 
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
@@ -31,7 +33,7 @@ class UserProfile(UserMixin, db.Model):
 class AsyncOperationStatus(db.Model):
     __tablename__ = 'async_operation_status'
     id = db.Column(db.Integer, primary_key=True)
-    code = db.Column('name', db.String(20), nullable=True)
+    code = db.Column('code', db.String(20), nullable=True)
 
 
 class AsyncOperation(db.Model):
@@ -44,6 +46,10 @@ class AsyncOperation(db.Model):
     user_profile = db.relationship('UserProfile', foreign_keys=user_profile_id)
 
 
-
+event.listen(
+        AsyncOperationStatus.__table__, 'after_create',
+        DDL(
+                """ INSERT INTO async_operation_status (id,code) VALUES(1,'pending'),(2, 'ok'),(3, 'error'); """)
+)
 
 
