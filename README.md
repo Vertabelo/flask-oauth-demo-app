@@ -1,6 +1,6 @@
 # Flask OAuth Demo App
 
-<b>The example Python application that use the OAuth flow to build a 'Login with Facebook' button.</b> <br>
+<b>The example Python application that uses the OAuth flow to build a 'Login with Facebook' button.</b> <br>
 More details about the OAuth 2.0 flow and step by step information how the application works is presented in the 
 tutorial: <br>
 http://www.vertabelo.com/blog/technical-articles/how-to-store-authentication-data-in-a-database-part-4-implementing-the-login-with-facebook-button-in-python
